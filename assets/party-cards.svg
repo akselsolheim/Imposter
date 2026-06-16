@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-label="Fargerike spillkort">
+  <rect width="720" height="420" rx="44" fill="#ffe165"/>
+  <path d="M0 290c78-28 129-4 193 18 74 25 137 17 205-28 84-55 166-68 322-6v146H0z" fill="#35a77d"/>
+  <path d="M46 78h108v74H46zM574 62h104v86H574zM86 302h96v52H86zM520 310h132v48H520z" fill="#ffffff" opacity=".42"/>
+  <g transform="rotate(-10 223 204)">
+    <rect x="134" y="70" width="178" height="244" rx="24" fill="#ffffff" stroke="#171717" stroke-width="8"/>
+    <rect x="158" y="96" width="130" height="64" rx="16" fill="#ff6b3d"/>
+    <circle cx="193" cy="222" r="28" fill="#171717"/>
+    <circle cx="253" cy="222" r="28" fill="#171717"/>
+    <path d="M188 268c27 20 70 20 94-2" fill="none" stroke="#171717" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(9 462 205)">
+    <rect x="372" y="68" width="178" height="244" rx="24" fill="#ffffff" stroke="#171717" stroke-width="8"/>
+    <rect x="396" y="96" width="130" height="64" rx="16" fill="#2f7bff"/>
+    <path d="M430 218h66M463 185v66" stroke="#171717" stroke-width="12" stroke-linecap="round"/>
+    <path d="M414 270c26-22 71-23 98 0" fill="none" stroke="#171717" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M348 47l15 34 36 4-27 24 8 36-32-18-32 18 8-36-27-24 36-4z" fill="#ff6b3d" stroke="#171717" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M96 222l27 13 27-13-13 27 13 27-27-13-27 13 13-27zM590 214l24 12 24-12-12 24 12 24-24-12-24 12 12-24z" fill="#ffffff" stroke="#171717" stroke-width="6" stroke-linejoin="round"/>
+</svg>
