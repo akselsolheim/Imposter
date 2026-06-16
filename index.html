@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Imposter Ordspill</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="preload" href="assets/party-cards.svg?v=6" as="image" />
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="preload" href="assets/party-cards.svg?v=7" as="image" />
+    <link rel="stylesheet" href="styles.css?v=7" />
     <style>
       :root { --ink:#161616; --muted:#315b5c; --accent:#00a7b5; --mint:#4ff0d1; --sun:#f7f06d; }
       * { box-sizing: border-box; }
@@ -35,13 +35,16 @@
       .count, .icon-btn, .primary-btn, .danger-btn, .ghost-btn { min-height: 48px; border: 2px solid #161616; border-radius: 8px; font-weight: 950; }
       .icon-btn { color: #fff; background: #161616; box-shadow: 4px 4px 0 rgba(22,22,22,.28); }
       .primary-btn { background: linear-gradient(135deg, #00a7b5, #4ff0d1); box-shadow: 4px 4px 0 #161616; }
-      .player-row { display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 8px; }
-      input, textarea { width: 100%; min-height: 44px; border: 2px solid #161616; border-radius: 8px; padding: 10px; }
+      .player-list { display: grid; gap: 10px; }
+      .player-row { display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 9px; }
+      .avatar { display: grid; place-items: center; width: 28px; height: 28px; border: 2px solid var(--ink); border-radius: 8px; background: linear-gradient(135deg, var(--sun), var(--mint)); font-size: .85rem; font-weight: 950; box-shadow: 2px 2px 0 var(--ink); }
+      input, textarea { width: 100%; min-height: 44px; border: 2px solid #161616; border-radius: 8px; padding: 10px; background: #fff; color: var(--ink); }
+      .custom-builder { display: grid; gap: 10px; padding: 14px; border: 2px solid var(--ink); border-radius: 8px; background: #eafffb; }
       @media (max-width: 420px) { .category-grid { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
     <main class="app" id="app"></main>
-    <script src="app.js?v=6"></script>
+    <script src="app.js?v=7"></script>
   </body>
 </html>
