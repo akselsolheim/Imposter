@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Imposter Ordspill</title>
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="preload" href="assets/party-cards.svg" as="image" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="assets/party-cards.svg?v=4" as="image" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+    <style>
+      .app { min-height: 100svh; width: min(100%, 520px); margin: 0 auto; padding: 18px; }
+      .screen, .setup, .field, .custom-builder, .player-list { display: grid; gap: 14px; }
+      .panel { background: rgba(255,255,255,.92); border: 3px solid #161616; border-radius: 8px; box-shadow: 7px 7px 0 #161616; padding: 16px; }
+      .hero-art { width: 100%; max-height: 260px; object-fit: cover; border-radius: 8px; }
+      .category-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .category-card { width: 100%; min-height: 106px; display: grid; gap: 5px; text-align: left; padding: 12px; border: 2px solid #161616; border-radius: 8px; background: #d6fff6; box-shadow: 4px 4px 0 #161616; }
+      .category-card span { display: block; }
+      .category-name { font-weight: 950; }
+      .category-vibe, .category-count, .hint { color: #315b5c; font-weight: 800; }
+      .stepper { display: grid; grid-template-columns: 48px 1fr 48px; gap: 10px; }
+      .count, .icon-btn, .primary-btn, .danger-btn, .ghost-btn { min-height: 48px; border: 2px solid #161616; border-radius: 8px; font-weight: 950; }
+      .primary-btn { background: linear-gradient(135deg, #00a7b5, #4ff0d1); box-shadow: 4px 4px 0 #161616; }
+      .player-row { display: grid; grid-template-columns: 28px 1fr; align-items: center; gap: 8px; }
+      input, textarea { width: 100%; min-height: 44px; border: 2px solid #161616; border-radius: 8px; padding: 10px; }
+      @media (max-width: 420px) { .category-grid { grid-template-columns: 1fr; } }
+    </style>
   </head>
   <body>
     <main class="app" id="app"></main>
-    <script src="app.js"></script>
+    <script src="app.js?v=4"></script>
   </body>
 </html>
