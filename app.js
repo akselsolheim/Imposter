@@ -1,100 +1,80 @@
-const WORD_PACKS = {
-  countries: {
-    name: "Land",
-    vibe: "Verdenskart",
-    words: [
-      "Norge", "Sverige", "Danmark", "Finland", "Island", "Tyskland", "Frankrike", "Spania", "Italia", "Portugal",
-      "Nederland", "Belgia", "Sveits", "\u00d8sterrike", "Polen", "Hellas", "Tyrkia", "Storbritannia", "Irland", "Ukraina",
-      "Russland", "USA", "Canada", "Mexico", "Brasil", "Argentina", "Chile", "Peru", "Colombia", "Egypt",
-      "Marokko", "S\u00f8r-Afrika", "Nigeria", "Kenya", "India", "Kina", "Japan", "S\u00f8r-Korea", "Thailand", "Vietnam",
-      "Indonesia", "Australia", "New Zealand", "Saudi-Arabia", "De forente arabiske emirater", "Qatar", "Israel", "Singapore", "Malaysia", "Filippinene"
-    ]
-  },
-  movies: {
-    name: "Filmer",
-    vibe: "Kinomodus",
-    words: [
-      "Titanic", "Avatar", "Star Wars", "Jurassic Park", "Harry Potter", "Ringenes herre", "The Matrix", "Forrest Gump", "Toy Story", "L\u00f8venes konge",
-      "Frozen", "Shrek", "Spider-Man", "Batman", "Superman", "Iron Man", "Avengers", "Black Panther", "Joker", "Barbie",
-      "Oppenheimer", "Interstellar", "Inception", "Gladiator", "Pirates of the Caribbean", "Indiana Jones", "James Bond", "Mission Impossible", "Top Gun", "Rocky",
-      "Karate Kid", "Home Alone", "The Grinch", "Finding Nemo", "Cars", "Coco", "Moana", "Aladdin", "Mulan", "Beauty and the Beast",
-      "The Godfather", "Jaws", "E.T.", "Back to the Future", "Ghostbusters", "Men in Black", "The Hunger Games", "Twilight", "Dune", "The Super Mario Bros. Movie"
-    ]
-  },
-  tv: {
-    name: "TV-serier",
-    vibe: "Episodekaos",
-    words: [
-      "Friends", "The Office", "Stranger Things", "Game of Thrones", "Breaking Bad", "Better Call Saul", "The Simpsons", "Family Guy", "South Park", "SpongeBob",
-      "The Mandalorian", "Wednesday", "Squid Game", "The Last of Us", "The Walking Dead", "Peaky Blinders", "Sherlock", "Doctor Who", "House", "Grey's Anatomy",
-      "Modern Family", "Brooklyn Nine-Nine", "How I Met Your Mother", "The Big Bang Theory", "Seinfeld", "Lost", "Prison Break", "Money Heist", "Dark", "The Crown",
-      "Bridgerton", "Vikings", "The Witcher", "Narcos", "Loki", "WandaVision", "Daredevil", "Arrow", "The Flash", "Supernatural",
-      "Riverdale", "Gossip Girl", "Outer Banks", "Cobra Kai", "The Boys", "Invincible", "Arcane", "One Piece", "The Bear", "House of the Dragon"
-    ]
-  },
-  mixed: {
-    name: "Blandet",
-    vibe: "Litt av alt",
-    words: [
-      "pizza", "fotball", "strand", "skole", "kino", "sn\u00f8", "taco", "tog", "mobil", "bursdag",
-      "hytte", "musikk", "butikk", "ferie", "kaffe", "regn", "spill", "hund", "sykkel", "flyplass",
-      "bibliotek", "sv\u00f8mmehall", "fjell", "restaurant", "park", "museum", "hotell", "busstopp", "klasserom", "stadion",
-      "katt", "hest", "l\u00f8ve", "pingvin", "hai", "kanin", "slange", "elefant", "frosk", "bj\u00f8rn",
-      "Minecraft", "Fortnite", "Roblox", "controller", "headset", "basket", "ski", "tennis", "lekse", "sommer"
-    ]
-  },
-  food: {
-    name: "Mat",
-    vibe: "Sultne hint",
-    words: [
-      "burger", "sushi", "pannekake", "sjokolade", "brus", "is", "lasagne", "eple", "kebab", "nudler",
-      "gr\u00f8t", "salat", "vaffel", "ost", "smoothie", "popcorn", "donut", "taco", "pizza", "pasta",
-      "ris", "kylling", "biff", "fisk", "suppe", "br\u00f8d", "egg", "bacon", "p\u00f8lse", "pommes frites",
-      "kake", "muffins", "cookies", "jordb\u00e6r", "banan", "appelsin", "vannmelon", "gulrot", "potet", "mais",
-      "yoghurt", "melk", "kaffe", "te", "juice", "cola", "chips", "nachos", "honning", "kanel"
-    ]
-  },
-  historical: {
-    name: "Historiske figurer",
-    vibe: "Tidsmaskin",
-    words: [
-      "Albert Einstein", "Isaac Newton", "Marie Curie", "Leonardo da Vinci", "Napoleon", "Julius Caesar", "Cleopatra", "Vikingkongen Harald H\u00e5rfagre", "Abraham Lincoln", "George Washington",
-      "Martin Luther King jr.", "Nelson Mandela", "Mahatma Gandhi", "Winston Churchill", "Dronning Elizabeth I", "Dronning Victoria", "Jeanne d'Arc", "Christopher Columbus", "Galileo Galilei", "Charles Darwin",
-      "Nikola Tesla", "Thomas Edison", "Alexander den store", "Sokrates", "Platon", "Aristoteles", "William Shakespeare", "Mozart", "Beethoven", "Frida Kahlo",
-      "Pablo Picasso", "Vincent van Gogh", "Rosa Parks", "Amelia Earhart", "Florence Nightingale", "Malala Yousafzai", "Anne Frank", "Oskar Schindler", "Marco Polo", "Mansa Musa",
-      "Sun Tzu", "Konfucius", "Karl Marx", "Sigmund Freud", "Fidel Castro", "Che Guevara", "Mikhail Gorbatsjov", "Margaret Thatcher", "Barack Obama", "Kong Haakon VII"
-    ]
-  }
+const packData = [
+  ["countries", "Land", "Verdenskart", "Norge|Sverige|Danmark|Finland|Island|Tyskland|Frankrike|Spania|Italia|Portugal|Nederland|Belgia|Sveits|Østerrike|Polen|Hellas|Tyrkia|Storbritannia|Irland|Ukraina|Russland|USA|Canada|Mexico|Brasil|Argentina|Chile|Peru|Colombia|Egypt|Marokko|Sør-Afrika|Nigeria|Kenya|India|Kina|Japan|Sør-Korea|Thailand|Vietnam|Indonesia|Australia|New Zealand|Saudi-Arabia|De forente arabiske emirater|Qatar|Israel|Singapore|Malaysia|Filippinene"],
+  ["movies", "Filmer", "Kinomodus", "Titanic|Avatar|Star Wars|Jurassic Park|Harry Potter|Ringenes herre|The Matrix|Forrest Gump|Toy Story|Løvenes konge|Frozen|Shrek|Spider-Man|Batman|Superman|Iron Man|Avengers|Black Panther|Joker|Barbie|Oppenheimer|Interstellar|Inception|Gladiator|Pirates of the Caribbean|Indiana Jones|James Bond|Mission Impossible|Top Gun|Rocky|Karate Kid|Home Alone|The Grinch|Finding Nemo|Cars|Coco|Moana|Aladdin|Mulan|Beauty and the Beast|The Godfather|Jaws|E.T.|Back to the Future|Ghostbusters|Men in Black|The Hunger Games|Twilight|Dune|The Super Mario Bros. Movie"],
+  ["tv", "TV-serier", "Episodekaos", "Friends|The Office|Stranger Things|Game of Thrones|Breaking Bad|Better Call Saul|The Simpsons|Family Guy|South Park|SpongeBob|The Mandalorian|Wednesday|Squid Game|The Last of Us|The Walking Dead|Peaky Blinders|Sherlock|Doctor Who|House|Grey's Anatomy|Modern Family|Brooklyn Nine-Nine|How I Met Your Mother|The Big Bang Theory|Seinfeld|Lost|Prison Break|Money Heist|Dark|The Crown|Bridgerton|Vikings|The Witcher|Narcos|Loki|WandaVision|Daredevil|Arrow|The Flash|Supernatural|Riverdale|Gossip Girl|Outer Banks|Cobra Kai|The Boys|Invincible|Arcane|One Piece|The Bear|House of the Dragon"],
+  ["mixed", "Blandet", "Litt av alt", "pizza|fotball|strand|skole|kino|snø|taco|tog|mobil|bursdag|hytte|musikk|butikk|ferie|kaffe|regn|spill|hund|sykkel|flyplass|bibliotek|svømmehall|fjell|restaurant|park|museum|hotell|busstopp|klasserom|stadion|katt|hest|løve|pingvin|hai|kanin|slange|elefant|frosk|bjørn|Minecraft|Fortnite|Roblox|controller|headset|basket|ski|tennis|lekse|sommer"],
+  ["food", "Mat", "Sultne hint", "burger|sushi|pannekake|sjokolade|brus|is|lasagne|eple|kebab|nudler|grøt|salat|vaffel|ost|smoothie|popcorn|donut|taco|pizza|pasta|ris|kylling|biff|fisk|suppe|brød|egg|bacon|pølse|pommes frites|kake|muffins|cookies|jordbær|banan|appelsin|vannmelon|gulrot|potet|mais|yoghurt|melk|kaffe|te|juice|cola|chips|nachos|honning|kanel"],
+  ["historical", "Historiske figurer", "Tidsmaskin", "Albert Einstein|Isaac Newton|Marie Curie|Leonardo da Vinci|Napoleon|Julius Caesar|Cleopatra|Vikingkongen Harald Hårfagre|Abraham Lincoln|George Washington|Martin Luther King jr.|Nelson Mandela|Mahatma Gandhi|Winston Churchill|Dronning Elizabeth I|Dronning Victoria|Jeanne d'Arc|Christopher Columbus|Galileo Galilei|Charles Darwin|Nikola Tesla|Thomas Edison|Alexander den store|Sokrates|Platon|Aristoteles|William Shakespeare|Mozart|Beethoven|Frida Kahlo|Pablo Picasso|Vincent van Gogh|Rosa Parks|Amelia Earhart|Florence Nightingale|Malala Yousafzai|Anne Frank|Oskar Schindler|Marco Polo|Mansa Musa|Sun Tzu|Konfucius|Karl Marx|Sigmund Freud|Fidel Castro|Che Guevara|Mikhail Gorbatsjov|Margaret Thatcher|Barack Obama|Kong Haakon VII"]
+];
+
+const WORD_PACKS = Object.fromEntries(packData.map(([id, name, vibe, words]) => [id, { name, vibe, words: words.split("|") }]));
+const FALLBACK_HINTS = { countries: ["flagg", "kart", "hovedstad"], movies: ["kino", "scene", "popcorn"], tv: ["episode", "sesong", "skjerm"], mixed: ["ting", "hverdag", "minne"], food: ["smak", "tallerken", "kjøkken"], historical: ["historie", "bok", "museum"] };
+const HINTS = {
+  norge: "fjord", sverige: "Stockholm", danmark: "København", finland: "sauna", island: "vulkan", tyskland: "Berlin", frankrike: "Eiffeltårnet", spania: "Madrid", italia: "Roma", portugal: "Lisboa", nederland: "tulipan", belgia: "vaffel", sveits: "Alpene", "østerrike": "Wien", polen: "Warszawa", hellas: "Athen", tyrkia: "Istanbul", storbritannia: "London", irland: "kløver", ukraina: "Kyiv", russland: "Moskva", usa: "frihetsgudinnen", canada: "lønn", mexico: "taco", brasil: "Rio", argentina: "tango", chile: "langt", peru: "Machu Picchu", colombia: "kaffe", egypt: "pyramide", kina: "mur", japan: "Tokyo", australia: "Sydney",
+  titanic: "skip", avatar: "blå", "star wars": "lys-sverd", "jurassic park": "dinosaur", "harry potter": "tryllestav", "ringenes herre": "ring", "the matrix": "kode", "forrest gump": "løping", "toy story": "leker", frozen: "is", shrek: "sump", "spider-man": "nett", batman: "flaggermus", superman: "kappe", "iron man": "rustning", avengers: "helter", joker: "smil", barbie: "rosa", oppenheimer: "atombombe", interstellar: "rom", inception: "drøm", gladiator: "arena", rocky: "boksing", "finding nemo": "fisk", cars: "bil", coco: "gitar", moana: "hav", aladdin: "lampe", mulan: "kriger", jaws: "hai", "e.t.": "alien", dune: "sand",
+  friends: "sofa", "the office": "kontor", "stranger things": "Upside Down", "game of thrones": "trone", "breaking bad": "kjemi", "better call saul": "advokat", "the simpsons": "gul", "squid game": "maske", "the last of us": "sopp", "the walking dead": "zombie", sherlock: "detektiv", house: "lege", lost: "øy", dark: "tid", vikings: "skip", loki: "variant", arrow: "pil", "the flash": "fart", "cobra kai": "karate", "one piece": "pirat", "the bear": "kjøkken",
+  pizza: "ost", fotball: "gress", strand: "sand", skole: "pult", kino: "popcorn", snø: "kaldt", taco: "skjell", tog: "skinner", mobil: "lomme", bursdag: "lys", hytte: "peis", musikk: "rytme", butikk: "kurv", ferie: "koffert", kaffe: "kopp", regn: "paraply", spill: "poeng", hund: "bånd", sykkel: "pedal", flyplass: "bagasje", bibliotek: "stille", svømmehall: "klor", fjell: "topp", restaurant: "meny", park: "benk", museum: "utstilling", hotell: "nøkkel", stadion: "tribune", katt: "værhår", hest: "sal", løve: "mane", pingvin: "is", hai: "finne", kanin: "gulrot", slange: "skjell", elefant: "snabel", frosk: "dam", bjørn: "honning", minecraft: "blokker", fortnite: "storm", roblox: "avatar", controller: "knapp", headset: "lyd", basket: "kurv", ski: "staver", tennis: "racket", lekse: "bok", sommer: "sol",
+  burger: "brød", sushi: "ris", pannekake: "sirup", sjokolade: "kakao", brus: "bobler", is: "kjeks", lasagne: "lag", eple: "kjerne", kebab: "rull", nudler: "spisepinner", grøt: "kanel", salat: "blad", vaffel: "hjerte", ost: "gul", smoothie: "sugerør", donut: "hull", pasta: "saus", ris: "korn", kylling: "vinge", biff: "stek", fisk: "skjell", suppe: "skje", brød: "skive", egg: "plomme", bacon: "sprø", "pommes frites": "salt", kake: "lys", jordbær: "rød", banan: "gul", appelsin: "skall", vannmelon: "frø", gulrot: "oransje", potet: "mos", mais: "kolbe", yoghurt: "skje", melk: "kartong", te: "pose", juice: "frukt", cola: "kullsyre", chips: "pose", nachos: "ost", honning: "bie",
+  "albert einstein": "relativitet", "isaac newton": "eple", "marie curie": "radium", "leonardo da vinci": "Mona Lisa", napoleon: "keiser", "julius caesar": "Roma", cleopatra: "Egypt", "abraham lincoln": "president", "george washington": "president", "nelson mandela": "frihet", "mahatma gandhi": "fred", "winston churchill": "krig", "jeanne d'arc": "rustning", "galileo galilei": "teleskop", "charles darwin": "evolusjon", "nikola tesla": "elektrisitet", "thomas edison": "lyspære", sokrates: "filosofi", platon: "akademi", aristoteles: "logikk", "william shakespeare": "teater", mozart: "musikk", beethoven: "symfoni", "frida kahlo": "maleri", "rosa parks": "buss", "anne frank": "dagbok", "marco polo": "reise", "mansa musa": "gull"
 };
 
-const RELATED_HINTS = Object.fromEntries([
-  ["norge", "fjord"], ["sverige", "Stockholm"], ["danmark", "K\u00f8benhavn"], ["finland", "sauna"], ["island", "vulkan"],
-  ["tyskland", "Berlin"], ["frankrike", "Eiffelt\u00e5rnet"], ["spania", "Madrid"], ["italia", "Roma"], ["portugal", "Lisboa"],
-  ["nederland", "tulipan"], ["belgia", "vaffel"], ["sveits", "Alpene"], ["\u00f8sterrike", "Wien"], ["polen", "Warszawa"],
-  ["hellas", "Athen"], ["tyrkia", "Istanbul"], ["storbritannia", "London"], ["irland", "kl\u00f8ver"], ["ukraina", "Kyiv"],
-  ["russland", "Moskva"], ["usa", "frihetsgudinnen"], ["canada", "l\u00f8nn"], ["mexico", "taco"], ["brasil", "Rio"],
-  ["argentina", "tango"], ["chile", "langt"], ["peru", "Machu Picchu"], ["colombia", "kaffe"], ["egypt", "pyramide"],
-  ["marokko", "Marrakech"], ["s\u00f8r-afrika", "Cape Town"], ["nigeria", "Lagos"], ["kenya", "safari"], ["india", "Taj Mahal"],
-  ["kina", "mur"], ["japan", "Tokyo"], ["s\u00f8r-korea", "Seoul"], ["thailand", "Bangkok"], ["vietnam", "Hanoi"],
-  ["indonesia", "Bali"], ["australia", "Sydney"], ["new zealand", "kiwi"], ["saudi-arabia", "\u00f8rken"], ["de forente arabiske emirater", "Dubai"],
-  ["qatar", "Doha"], ["israel", "Jerusalem"], ["singapore", "by"], ["malaysia", "Kuala Lumpur"], ["filippinene", "\u00f8y"],
+const SAVE_KEY = "imposterSavedCategories";
+const app = document.querySelector("#app");
+const state = { screen: "setup", playerCount: 5, players: ["Spiller 1", "Spiller 2", "Spiller 3", "Spiller 4", "Spiller 5"], pack: "countries", savedPacks: loadSaved(), newCategoryName: "", newCategoryWords: "", editingCategoryId: null, scores: {}, game: null };
 
-  ["titanic", "skip"], ["avatar", "bl\u00e5"], ["star wars", "lys-sverd"], ["jurassic park", "dinosaur"], ["harry potter", "tryllestav"],
-  ["ringenes herre", "ring"], ["the matrix", "kode"], ["forrest gump", "l\u00f8ping"], ["toy story", "leker"], ["l\u00f8venes konge", "savanne"],
-  ["frozen", "is"], ["shrek", "sump"], ["spider-man", "nett"], ["batman", "flaggermus"], ["superman", "kappe"],
-  ["iron man", "rustning"], ["avengers", "helter"], ["black panther", "Wakanda"], ["joker", "smil"], ["barbie", "rosa"],
-  ["oppenheimer", "atombombe"], ["interstellar", "rom"], ["inception", "dr\u00f8m"], ["gladiator", "arena"], ["pirates of the caribbean", "pirat"],
-  ["indiana jones", "pisk"], ["james bond", "agent"], ["mission impossible", "spion"], ["top gun", "jagerfly"], ["rocky", "boksing"],
-  ["karate kid", "spark"], ["home alone", "feller"], ["the grinch", "jul"], ["finding nemo", "fisk"], ["cars", "bil"],
-  ["coco", "gitar"], ["moana", "hav"], ["aladdin", "lampe"], ["mulan", "kriger"], ["beauty and the beast", "rose"],
-  ["the godfather", "mafia"], ["jaws", "hai"], ["e.t.", "alien"], ["back to the future", "tidsmaskin"], ["ghostbusters", "sp\u00f8kelse"],
-  ["men in black", "romvesen"], ["the hunger games", "bue"], ["twilight", "vampyr"], ["dune", "sand"], ["the super mario bros. movie", "r\u00f8r"],
+function loadSaved() { try { const x = JSON.parse(localStorage.getItem(SAVE_KEY) || "[]"); return Array.isArray(x) ? x : []; } catch { return []; } }
+function storeSaved() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(state.savedPacks)); } catch {} }
+function esc(x) { return String(x).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
+function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+function shuffle(a) { const b = [...a]; for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; }
+function wordsFromText(s) { return s.split(/\n|,/).map((w) => w.trim()).filter(Boolean); }
+function allPacks() { return { ...WORD_PACKS, ...Object.fromEntries(state.savedPacks.map((p) => [p.id, { ...p, vibe: "Din kategori", saved: true }])) }; }
+function currentPack() { return allPacks()[state.pack] || WORD_PACKS.countries; }
+function hint(word) { return HINTS[String(word).toLowerCase()] || pick(FALLBACK_HINTS[state.pack] || ["nærme", "idé", "ting"]); }
+function ensurePlayers() { while (state.players.length < state.playerCount) state.players.push(`Spiller ${state.players.length + 1}`); state.players = state.players.slice(0, state.playerCount); state.players.forEach((p) => { if (!(p in state.scores)) state.scores[p] = 0; }); }
+function topbar(extra = "") { return `<div class="topbar"><div class="brand"><span class="mark">?</span><span>Imposter</span></div>${extra}</div>`; }
 
-  ["friends", "sofa"], ["the office", "kontor"], ["stranger things", "Upside Down"], ["game of thrones", "trone"], ["breaking bad", "kjemi"],
-  ["better call saul", "advokat"], ["the simpsons", "gul"], ["family guy", "familie"], ["south park", "Colorado"], ["spongebob", "svamp"],
-  ["the mandalorian", "hjelm"], ["wednesday", "Addams"], ["squid game", "maske"], ["the last of us", "sopp"], ["the walking dead", "zombie"],
-  ["peaky blinders", "caps"], ["sherlock", "detektiv"], ["doctor who", "TARDIS"], ["house", "lege"], ["grey's anatomy", "sykehus"],
-  ["modern family", "familie"], ["brooklyn nine-nine", "politi"], ["how i met your mother", "fortelling"], ["the big bang theory", "nerd"], ["seinfeld", "komedie"],
-  ["lost", "\u00f8y"], ["prison break", "fengsel"], ["money heist", "maske"], ["dark", "tid"], ["the crown", "dronning"],
-  ["bridgerton", "ball"], ["vikings", "skip"], ["the witcher", "monster"], ["narcos", "kartell"], ["loki", "variant"],
-  ["wandavision", "sitcom"], ["daredevil", "blind"], ["arrow", "pil"], ["the flash", "fart"], ["supernatural", "br\u00f8dre"],
+function saveCategory() {
+  const name = state.newCategoryName.trim(), words = wordsFromText(state.newCategoryWords);
+  if (!name || !words.length) return;
+  if (state.editingCategoryId) state.savedPacks = state.savedPacks.map((p) => p.id === state.editingCategoryId ? { ...p, name, words } : p);
+  else { state.editingCategoryId = `saved-${Date.now()}`; state.savedPacks.push({ id: state.editingCategoryId, name, words }); }
+  state.pack = state.editingCategoryId; state.editingCategoryId = null; state.newCategoryName = ""; state.newCategoryWords = ""; storeSaved(); render();
+}
+function editCategory(id) { const p = state.savedPacks.find((x) => x.id === id); if (!p) return; state.editingCategoryId = id; state.newCategoryName = p.name; state.newCategoryWords = p.words.join("\n"); state.pack = id; render(); }
+function deleteCategory(id) { state.savedPacks = state.savedPacks.filter((p) => p.id !== id); if (state.pack === id) state.pack = "countries"; if (state.editingCategoryId === id) cancelEdit(); storeSaved(); render(); }
+function cancelEdit() { state.editingCategoryId = null; state.newCategoryName = ""; state.newCategoryWords = ""; render(); }
+function startGame() { ensurePlayers(); const word = pick(currentPack().words), allImposters = Math.random() < 0.005; state.game = { word, hint: hint(word), allImposters, imposterIndex: allImposters ? -1 : Math.floor(Math.random() * state.players.length), revealIndex: 0, phase: "pass", selectedVote: null }; state.screen = "reveal"; render(); }
+function role(i) { return state.game.allImposters || i === state.game.imposterIndex ? "imposter" : "citizen"; }
+function nextReveal() { if (state.game.phase === "pass") state.game.phase = "word"; else if (state.game.revealIndex < state.players.length - 1) { state.game.revealIndex++; state.game.phase = "pass"; } else state.screen = "round"; render(); }
+function finishVote() { if (state.game.allImposters) state.players.forEach((p) => state.scores[p] = (state.scores[p] || 0) + 1); else { const imp = state.players[state.game.imposterIndex], caught = state.game.selectedVote === imp; if (caught) state.players.forEach((p) => { if (p !== imp) state.scores[p] = (state.scores[p] || 0) + 1; }); else state.scores[imp] = (state.scores[imp] || 0) + 2; } state.screen = "result"; render(); }
+
+function setupScreen() {
+  ensurePlayers(); const packs = allPacks(), selected = currentPack();
+  const cards = Object.entries(packs).map(([id, p]) => `<div class="category-wrap"><button class="category-card ${state.pack === id ? "selected" : ""}" data-pack="${id}" type="button"><span class="category-name">${esc(p.name)}</span><span class="category-vibe">${esc(p.vibe)}</span><span class="category-count">${p.words.length} ord</span></button>${p.saved ? `<div class="category-tools"><button class="mini-action" data-edit-pack="${id}" type="button">Rediger</button><button class="mini-action danger" data-delete-pack="${id}" type="button">Slett</button></div>` : ""}</div>`).join("");
+  const players = state.players.map((p, i) => `<div class="player-row"><span class="avatar">${i + 1}</span><input data-player="${i}" value="${esc(p)}" aria-label="Navn på spiller ${i + 1}" /></div>`).join("");
+  return `<section class="screen">${topbar('<span class="pill">Pass mobilen</span>')}<div class="hero"><div class="hero-copy"><h1>Finn imposteren</h1><p class="lead">Alle får samme hemmelige ord, bortsett fra én imposter. Gi hint, lytt godt, og stem ut den som later som.</p></div><img class="hero-art" src="assets/party-cards.svg" alt="Fargerike spillkort" /></div><div class="panel setup"><div class="field"><div class="label-row"><span class="label">Spillere</span><span class="pill">${state.playerCount} med</span></div><div class="stepper"><button class="icon-btn" data-action="minus">-</button><div class="count">${state.playerCount}</div><button class="icon-btn" data-action="plus">+</button></div></div><div class="field"><div class="label-row"><span class="label">Kategori</span><span class="pill">${selected.words.length} ord</span></div><div class="category-grid">${cards}</div></div><div class="custom-builder"><div class="label-row"><span class="label">${state.editingCategoryId ? "Rediger kategori" : "Lag egen kategori"}</span><span class="pill">${state.editingCategoryId ? "endrer" : "lagres"}</span></div><input id="newCategoryName" value="${esc(state.newCategoryName)}" placeholder="Navn på kategori" /><textarea id="newCategoryWords" placeholder="Skriv ett ord per linje">${esc(state.newCategoryWords)}</textarea><div class="builder-actions"><button class="primary-btn" data-action="saveCategory" type="button">${state.editingCategoryId ? "Lagre endringer" : "Lagre kategori"}</button>${state.editingCategoryId ? `<button class="ghost-btn" data-action="cancelEdit" type="button">Avbryt</button>` : ""}</div><p class="hint">${state.editingCategoryId ? "Endringene lagres på den samme kategorien." : "Når du lagrer, dukker kategorien opp sammen med de andre og blir værende neste gang du åpner appen."}</p></div><div class="field"><span class="label">Navn</span><div class="player-list">${players}</div></div><button class="primary-btn" data-action="start">Start runde</button></div></section>`;
+}
+function revealScreen() {
+  const i = state.game.revealIndex, name = state.players[i], progress = Math.round(((i + (state.game.phase === "word" ? 1 : 0)) / state.players.length) * 100);
+  if (state.game.phase === "pass") return `<section class="screen">${topbar(`<span class="pill">${i + 1}/${state.players.length}</span>`)}<div class="progress"><div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div></div><div class="panel pass-card"><p class="hint">Gi mobilen til</p><div class="pass-name">${esc(name)}</div><p class="lead">Trykk når bare denne spilleren ser skjermen.</p><button class="primary-btn" data-action="showWord">Vis min rolle</button></div></section>`;
+  return `<section class="screen">${topbar(`<span class="pill">${i + 1}/${state.players.length}</span>`)}<div class="panel word-card"><p class="hint">${esc(name)}, dette er hemmelig.</p><div class="secret">${role(i) === "imposter" ? `<div class="big-role imposter-word">Du er imposteren</div><p class="hint">Hint: <strong>${esc(state.game.hint)}</strong></p>` : `<p class="hint">Ordet er</p><div class="secret-word">${esc(state.game.word)}</div>`}</div><button class="primary-btn" data-action="nextReveal">Skjul og send videre</button></div></section>`;
+}
+function roundScreen() { return `<section class="screen">${topbar('<button class="ghost-btn" data-action="setup">Ny runde</button>')}<div class="panel round-card"><div class="party-stamp">Rollene er delt ut</div><h2>Spill i person</h2><p class="lead">Legg bort mobilen litt. Snakk, gi hint og prøv å finne ut hvem som faker. Når dere er klare, trykker dere videre til avstemning.</p><div class="table-card"><strong>${state.players.length} spillere er med</strong><span>Én skjult imposter. Kanskje.</span></div><button class="danger-btn" data-action="toVote">Vi er ferdige</button></div></section>`; }
+function voteScreen() { return `<section class="screen">${topbar('<span class="pill">Avstemning</span>')}<div class="panel round-card"><h2>Hvem er imposter?</h2><p class="lead">Diskuter først. Når dere er enige, velg én spiller og avslør svaret.</p><div class="vote-list">${state.players.map((p) => `<button class="vote-btn ${state.game.selectedVote === p ? "selected" : ""}" data-vote="${esc(p)}">${esc(p)}</button>`).join("")}</div><button class="danger-btn" data-action="finishVote" ${state.game.selectedVote ? "" : "disabled"}>Avslør</button></div></section>`; }
+function resultScreen() {
+  const imp = state.game.allImposters ? null : state.players[state.game.imposterIndex], caught = !state.game.allImposters && state.game.selectedVote === imp;
+  const rows = [...state.players].sort((a, b) => (state.scores[b] || 0) - (state.scores[a] || 0)).map((p) => `<div class="score-row"><strong>${esc(p)}</strong><span class="pill">${state.scores[p] || 0} poeng</span></div>`).join("");
+  return `<section class="screen">${topbar(`<span class="pill">${state.game.allImposters ? "Kaosrunde" : "Resultat"}</span>`)}<div class="panel result-card ${state.game.allImposters ? "chaos-card" : ""}"><span class="result-badge ${caught ? "" : "bad"}">${state.game.allImposters ? "0,5% sjanse" : caught ? "Imposteren ble tatt" : "Imposteren slapp unna"}</span><h2>${state.game.allImposters ? "Alle var imposter" : `${esc(imp)} var imposteren`}</h2><p class="lead">Ordet var <strong>${esc(state.game.word)}</strong>. ${state.game.allImposters ? "Alle får 1 poeng for å overleve kaoset." : caught ? "Alle andre får 1 poeng." : `${esc(imp)} får 2 poeng.`}</p><div class="score-list">${rows}</div><div class="secondary-actions"><button class="primary-btn" data-action="playAgain">Spill igjen</button><button class="ghost-btn" data-action="setup">Endre spill</button></div></div></section>`;
+}
+function render() { app.innerHTML = ({ setup: setupScreen, reveal: revealScreen, round: roundScreen, vote: voteScreen, result: resultScreen })[state.screen](); bindEvents(); }
+function bindEvents() {
+  app.querySelectorAll("[data-action]").forEach((b) => b.onclick = () => { const a = b.dataset.action; if (a === "minus") { state.playerCount = Math.max(3, state.playerCount - 1); render(); } if (a === "plus") { state.playerCount = Math.min(12, state.playerCount + 1); render(); } if (a === "start") startGame(); if (a === "showWord" || a === "nextReveal") nextReveal(); if (a === "toVote") { state.screen = "vote"; render(); } if (a === "finishVote") finishVote(); if (a === "playAgain") startGame(); if (a === "setup") { state.screen = "setup"; state.game = null; render(); } if (a === "saveCategory") saveCategory(); if (a === "cancelEdit") cancelEdit(); });
+  app.querySelectorAll("[data-pack]").forEach((b) => b.onclick = () => { state.pack = b.dataset.pack; render(); });
+  app.querySelectorAll("[data-edit-pack]").forEach((b) => b.onclick = () => editCategory(b.dataset.editPack));
+  app.querySelectorAll("[data-delete-pack]").forEach((b) => b.onclick = () => deleteCategory(b.dataset.deletePack));
+  app.querySelectorAll("[data-player]").forEach((x) => x.oninput = (e) => state.players[Number(e.target.dataset.player)] = e.target.value.trim() || `Spiller ${Number(e.target.dataset.player) + 1}`);
+  const n = app.querySelector("#newCategoryName"), w = app.querySelector("#newCategoryWords"); if (n) n.oninput = (e) => state.newCategoryName = e.target.value; if (w) w.oninput = (e) => state.newCategoryWords = e.target.value;
+  app.querySelectorAll("[data-vote]").forEach((b) => b.onclick = () => { state.game.selectedVote = b.dataset.vote; render(); });
+}
+render();
