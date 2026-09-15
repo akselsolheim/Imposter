@@ -1,0 +1,7 @@
+{
+  "name": "imposter-remastered",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Norsk Imposter-ordspill for 3–12 spillere på én mobil.",
+  "scripts": { "test": "node --test *.test.cjs" }
+}
